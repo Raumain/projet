@@ -61,12 +61,9 @@ function createTweet(informations) {
 
 
 const tweetsListElement = document.querySelector('#tweets-list')
-tweetsListElement.append(createTweet(tweets[0]))
+tweets.forEach(tweet => {
+  tweetsListElement.appendChild(createTweet(tweet))
+})
 
-// J'ai crée une fonction `createTweet` qui permet de créer un tweet plus facilement en lui passant les bons paramètres.
-// Elle prend en paramètre un objet avec les informations du tweet.
-// La fonction crée un élément `li` avec la classe `tweet`.
-// Ensuite, elle parcourt les clés et valeurs de l'objet passé en paramètre.
-// Pour chaque clé/valeur, elle crée un élément `p` avec la bonne classe et le bon contenu.
-// Enfin, elle ajoute l'élément `p` à l'élément `li`.
-// Et elle retourne l'élément `li`.
+// Pour afficher tous les tweets, je parcours simplement le tableau tweets.
+// Pour chaque tweet, j'insère dans la liste de tweets le nouveau tweet crée par la fonction createTweet.
