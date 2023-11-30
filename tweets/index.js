@@ -54,6 +54,11 @@ function createTweet(informations) {
     const element = document.createElement('p')
     element.classList.add(className)
     element.textContent = elementContent
+
+    if (className === 'likes' && elementContent > 10) {
+      element.classList.add('favorite')
+    }
+
     tweet.appendChild(element)
   })
   return tweet
@@ -65,5 +70,6 @@ tweets.forEach(tweet => {
   tweetsListElement.appendChild(createTweet(tweet))
 })
 
-// Pour afficher tous les tweets, je parcours simplement le tableau tweets.
-// Pour chaque tweet, j'insère dans la liste de tweets le nouveau tweet crée par la fonction createTweet.
+// Dans ma fonction createTweet, lorsque je crée un nouvel élément,
+// je vérifié si la clé de l'objet passé en paramètre est égale à 'likes' et si la valeur est supérieure à 10.
+// Si la condition est vraie, j'ai ajouté la classe 'favorite' à l'élément.
