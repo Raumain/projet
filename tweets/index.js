@@ -59,8 +59,14 @@ function createTweet(informations) {
       element.classList.add('favorite')
     }
 
-    tweet.appendChild(element)
+    if (className === 'likes') {
+      tweet.insertBefore(element, tweet.children[1])
+    }
+    else {
+      tweet.appendChild(element)
+    }
   })
+
   return tweet
 }
 
@@ -70,6 +76,6 @@ tweets.forEach(tweet => {
   tweetsListElement.appendChild(createTweet(tweet))
 })
 
-// Dans ma fonction createTweet, lorsque je crée un nouvel élément,
-// je vérifié si la clé de l'objet passé en paramètre est égale à 'likes' et si la valeur est supérieure à 10.
-// Si la condition est vraie, j'ai ajouté la classe 'favorite' à l'élément.
+// Pour afficher les informations dans le bon ordre
+// Je vérifie si la clé courante est "likes"
+// Si c'est le cas, au lieu de l'insérer à la suite des autres enfants de tweet, je l'insère après le premier enfant de tweet
